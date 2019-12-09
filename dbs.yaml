@@ -1,0 +1,368 @@
+# Abreu e Lima
+-
+  name: Abreu e lima
+  host: 192.168.100.126
+  port: 5433
+  database: alima
+  user: postgres
+  password: esus
+
+# Aliança
+-
+  name: Aliança
+  host: 192.168.100.36
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Bom Jardim
+-
+  name: Bom Jardim
+  host: 192.168.100.51
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Buenos Aires
+-
+  name: Buenos Aires
+  host: 192.168.100.38
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Carpina
+-
+  name: Carpina
+  host: 192.168.100.58
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Casinhas
+-
+  name: Casinhas
+  host: 192.168.100.32
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Chã de Alegria
+-
+  name: Chã de Alegria
+  host: 192.168.100.56
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Camaragibe
+-
+  name: Camaragibe
+  host: 192.168.100.18
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Cumaru
+-
+  name: Cumaru
+  host: 192.168.100.42
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Feira Nova
+-
+  name: Feira Nova
+  host: 192.168.100.39
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Frei Miguelinho
+-
+  name: Frei Miguelinho
+  host: 192.168.100.30
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Gloria do Goita
+-
+  name: Gloria do Goita
+  host: 192.168.100.55
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Itaguitinga
+-
+  name: Itaguitinga
+  host: 192.168.100.40
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# João Alfredo
+-
+  name: João Alfredo
+  host: 192.168.100.34
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Joaquim Nabuco
+-
+  name: Joaquim Nabuco
+  host: 192.168.100.25
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Lagoa do Carro 
+-
+  name: Lagoa do Carro 
+  host: 192.168.100.60
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Lagoa do Itaenga
+-
+  name: Lagoa do Itaenga
+  host: 192.168.100.53
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Limoeiro
+-
+  name: Limoeiro
+  host: 192.168.100.57
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Macaparana
+-
+  name: Macaparana
+  host: 192.168.100.52
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Machados
+-
+  name: Machados
+  host: 192.168.100.35
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Maraial
+-
+  name: Maraial
+  host: 192.168.100.16
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Moreno
+-
+  name: Moreno
+  host: 192.168.100.26
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Natuba
+-
+  name: Natuba
+  host: 192.168.100.41
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Nazaré da Mata
+-
+  name: Nazaré da Mata
+  host: 192.168.100.49
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Orobó
+-
+  name: Orobó
+  host: 192.168.100.20
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Passira
+-
+  name: Passira
+  host: 192.168.100.19
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Paudalho
+-
+  name: Paudalho
+  host: 192.168.100.27
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Riacho das Almas
+-
+  name: Riacho das Almas
+  host: 192.168.100.29
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Santa Maria do Cambucá
+-
+  name: Santa Maria do Cambucá
+  host: 192.168.100.47
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Salgadinho
+-
+  name: Salgadinho
+  host: 192.168.100.37
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# São Bento
+-
+  name: São Bento
+  host: 192.168.100.23
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# São Lourenço da Mata
+-
+  name: São Lourenço da Mata
+  host: 192.168.100.17
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# São Vicente
+-
+  name: São Vicente
+  host: 192.168.100.33
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Surubim
+-
+  name: Surubim
+  host: 192.168.100.43
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Tracunhaem
+-
+  name: Tracunhaem
+  host: 192.168.100.28
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Triunfo
+-
+  name: Triunfo
+  host: 192.168.100.15
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Umbuzeiro
+-
+  name: Umbuzeiro
+  host: 192.168.100.46
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Vertente do Lerio
+-
+  name: Vertente do Lerio
+  host: 192.168.100.59
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Vertentes
+-
+  name: Vertentes
+  host: 192.168.100.48
+  port: 5433
+  database: esus
+  user: postgres
+  password: esus
+
+# Vicencia
+-
+  name: Vicencia
+  host: 192.168.100.126
+  port: 5433
+  database: vicencia
+  user: postgres
+  password: esus
+
+# Vitoria
+-
+  name: Vitoria
+  host: 192.168.100.126
+  port: 5433
+  database: vitoria
+  user: postgres
+  password: esus

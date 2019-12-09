@@ -1,8 +1,8 @@
+-- View: pmaq."ODONTOLOGICO_PROFISSINAL"
 
+DROP VIEW if exists pmaq."ODONTOLOGICO_PROFISSINAL";
 
-DROP VIEW IF EXISTS pmaq."ODONTOLOGIA";
-
-CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS 
+CREATE OR REPLACE VIEW pmaq."ODONTOLOGICO_PROFISSINAL" AS 
  SELECT tb_dim_municipio.no_municipio,
     uu.nu_cnes,
     uu.no_unidade_saude,
@@ -13,62 +13,62 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
     tt.nu_ano,
     count(
         CASE
-            WHEN tt.nu_mes = 1 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 1 THEN 1
             ELSE NULL::integer
         END) AS atendimento_jan,
     count(
         CASE
-            WHEN tt.nu_mes = 2 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 2 THEN 1
             ELSE NULL::integer
         END) AS atendimento_fev,
     count(
         CASE
-            WHEN tt.nu_mes = 3 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 3 THEN 1
             ELSE NULL::integer
         END) AS atendimento_mar,
     count(
         CASE
-            WHEN tt.nu_mes = 4 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 4 THEN 1
             ELSE NULL::integer
         END) AS atendimento_abr,
     count(
         CASE
-            WHEN tt.nu_mes = 5 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 5 THEN 1
             ELSE NULL::integer
         END) AS atendimento_mai,
     count(
         CASE
-            WHEN tt.nu_mes = 6 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 6 THEN 1
             ELSE NULL::integer
         END) AS atendimento_jun,
     count(
         CASE
-            WHEN tt.nu_mes = 7 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 7 THEN 1
             ELSE NULL::integer
         END) AS atendimento_jul,
     count(
         CASE
-            WHEN tt.nu_mes = 8 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 8 THEN 1
             ELSE NULL::integer
         END) AS atendimento_ago,
     count(
         CASE
-            WHEN tt.nu_mes = 9 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 9 THEN 1
             ELSE NULL::integer
         END) AS atendimento_set,
     count(
         CASE
-            WHEN tt.nu_mes = 10 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 10 THEN 1
             ELSE NULL::integer
         END) AS atendimento_out,
     count(
         CASE
-            WHEN tt.nu_mes = 11 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 11 THEN 1
             ELSE NULL::integer
         END) AS atendimento_nov,
     count(
         CASE
-            WHEN tt.nu_mes = 12 THEN 1
+            WHEN (tb_dim_tipo_atendimento.ds_tipo_atendimento::text = ANY (ARRAY['Atendimento de urgência'::character varying::text, 'Consulta agendada'::character varying::text, 'Consulta no dia'::character varying::text])) AND tt.nu_mes = 12 THEN 1
             ELSE NULL::integer
         END) AS atendimento_dez,
     count(
@@ -505,62 +505,62 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
           WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS primeira_dez,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 1 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 1 THEN 1
             ELSE NULL::integer
         END) AS tratamento_jan,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 2 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 2 THEN 1
             ELSE NULL::integer
         END) AS tratamento_fev,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 3 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 3 THEN 1
             ELSE NULL::integer
         END) AS tratamento_mar,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 4 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 4 THEN 1
             ELSE NULL::integer
         END) AS tratamento_abr,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 5 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 5 THEN 1
             ELSE NULL::integer
         END) AS tratamento_mai,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 6 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 6 THEN 1
             ELSE NULL::integer
         END) AS tratamento_jun,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 7 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 7 THEN 1
             ELSE NULL::integer
         END) AS tratamento_jul,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 8 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 8 THEN 1
             ELSE NULL::integer
         END) AS tratamento_ago,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 9 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 9 THEN 1
             ELSE NULL::integer
         END) AS tratamento_set,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 10 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 10 THEN 1
             ELSE NULL::integer
         END) AS tratamento_out,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 11 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 11 THEN 1
             ELSE NULL::integer
         END) AS tratamento_nov,
     count(
         CASE
-            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid = 1 AND tt.nu_mes = 12 THEN 1
+            WHEN tb_fat_atendimento_odonto.st_conduta_tratamento_concluid > 0 AND tt.nu_mes = 12 THEN 1
             ELSE NULL::integer
         END) AS tratamento_dez,
     ( SELECT sum(
@@ -695,7 +695,7 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
              JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
           WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS proced_dez,
-    (( SELECT sum(
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '01'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -705,19 +705,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 1 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_jan,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_jan,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '02'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -727,19 +716,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 2 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_fev,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_fev,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '03'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -749,19 +727,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 3 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_mar,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_mar,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '04'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -771,19 +738,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 4 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_abr,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_abr,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '05'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -793,19 +749,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 5 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_mai,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_mai,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '06'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -815,19 +760,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 6 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_jun,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_jun,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '07'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -837,19 +771,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 7 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_jul,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_jul,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '08'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -859,19 +782,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 8 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_ago,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_ago,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '09'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -881,19 +793,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 9 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_set,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_set,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '10'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -903,19 +804,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 10 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_out,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_out,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '11'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -925,19 +815,8 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 11 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_nov,
-    (( SELECT sum(
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_nov,
+    ( SELECT sum(
                 CASE
                     WHEN to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'MM'::text) = '12'::text AND tb_cds_ativ_col_pratica.no_cds_ativ_col_pratica::text = 'ESCOVAÇÃO DENTAL SUPERVISIONADA'::text THEN tb_cds_ficha_ativ_col.qt_participante_ativ
                     ELSE 0
@@ -947,18 +826,7 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
              JOIN tb_cds_ficha_ativ_col ON rl_cds_ficha_ativ_col_pratica.co_cds_ficha_ativ_col = tb_cds_ficha_ativ_col.co_seq_cds_ficha_ativ_col
              JOIN tb_cds_prof p ON tb_cds_ficha_ativ_col.co_cds_prof_responsavel = p.co_seq_cds_prof
              JOIN tb_dim_unidade_saude u ON p.nu_cnes::text = u.nu_cnes::text
-          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text)) + (( SELECT sum(
-                CASE
-                    WHEN t.nu_mes = 12 THEN tb_fat_atend_odonto_proced.qt_procedimentos
-                    ELSE 0
-                END) AS sum
-           FROM tb_fat_atend_odonto_proced
-             JOIN tb_dim_profissional p ON tb_fat_atend_odonto_proced.co_dim_profissional_1 = p.co_seq_dim_profissional
-             JOIN tb_dim_tempo t ON tb_fat_atend_odonto_proced.co_dim_tempo = t.co_seq_dim_tempo
-             JOIN tb_dim_procedimento ON tb_fat_atend_odonto_proced.co_dim_procedimento = tb_dim_procedimento.co_seq_dim_procedimento
-             JOIN tb_dim_cbo c ON tb_fat_atend_odonto_proced.co_dim_cbo_1 = c.co_seq_dim_cbo
-             JOIN tb_dim_unidade_saude u ON tb_fat_atend_odonto_proced.co_dim_unidade_saude_1 = u.co_seq_dim_unidade_saude
-          WHERE t.nu_ano = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text AND tb_dim_procedimento.ds_proced::text = 'AÇÃO COLETIVA DE ESCOVAÇÃO DENTAL SUPERVISIONADA'::text)) AS super_dez
+          WHERE to_char(tb_cds_ficha_ativ_col.dt_ativ_col, 'YYYY'::text)::integer = tt.nu_ano AND p.nu_cns::text = pp.nu_cns::text AND u.nu_cnes::text = uu.nu_cnes::text) AS super_dez
    FROM tb_fat_atendimento_odonto
      JOIN tb_dim_profissional pp ON tb_fat_atendimento_odonto.co_dim_profissional_1 = pp.co_seq_dim_profissional
      JOIN tb_dim_tempo tt ON tb_fat_atendimento_odonto.co_dim_tempo = tt.co_seq_dim_tempo
@@ -970,8 +838,7 @@ CREATE OR REPLACE VIEW pmaq."ODONTOLOGIA" AS
   WHERE cc.nu_cbo::text = '223293'::text
   GROUP BY tb_dim_municipio.no_municipio, uu.no_unidade_saude, pp.nu_cns, pp.no_profissional, cc.nu_cbo, cc.no_cbo, tt.nu_ano, uu.nu_cnes;
 
-ALTER TABLE pmaq."ODONTOLOGIA"
+ALTER TABLE pmaq."ODONTOLOGICO_PROFISSINAL"
   OWNER TO postgres;
-GRANT ALL ON TABLE pmaq."ODONTOLOGIA" TO postgres;
-GRANT ALL ON TABLE pmaq."ODONTOLOGIA" TO pmaq;
-GRANT SELECT ON TABLE pmaq."ODONTOLOGIA" TO relatorio;
+GRANT ALL ON TABLE pmaq."ODONTOLOGICO_PROFISSINAL" TO postgres;
+GRANT ALL ON TABLE pmaq."ODONTOLOGICO_PROFISSINAL" TO pmaq;
