@@ -1,6 +1,6 @@
 -- View: pmaq.visita_mensal
 
-DROP VIEW if exists pmaq.visita_mensal;
+--DROP VIEW if exists pmaq.visita_mensal;
 
 CREATE OR REPLACE VIEW pmaq.visita_mensal AS 
  SELECT to_date(to_char(tt.nu_mes::double precision, '00'::text) || to_char(tt.nu_ano, '9999'::text), 'MMYYYY'::text) AS mes,

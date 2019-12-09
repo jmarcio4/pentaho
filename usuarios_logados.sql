@@ -1,4 +1,4 @@
--- View: pmaq.usuarios_logados
+---- View: pmaq.usuarios_logados
 
 DROP VIEW if exists pmaq.usuarios_logados;
 
